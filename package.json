@@ -9,12 +9,18 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@mui/material": "^5.15.13",
+    "@safe-global/auth-kit": "^2.0.2",
+    "@safe-global/protocol-kit": "^3.0.1",
+    "@safe-global/safe-react-components": "^2.0.6",
     "@types/node": "18.16.3",
     "@types/react": "18.2.0",
     "@types/react-dom": "18.2.1",
+    "@web3auth/safeauth-embed": "^0.0.0",
     "@worldcoin/idkit": "^1.1.0",
     "eslint": "8.39.0",
     "eslint-config-next": "13.3.4",
+    "ethers": "^6.11.1",
     "next": "13.3.4",
     "react": "18.2.0",
     "react-dom": "18.2.0",
