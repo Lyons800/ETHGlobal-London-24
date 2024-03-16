@@ -15,17 +15,11 @@ const MainLayout = ({ children }: MainLayoutProps) => {
 
   useEffect(() => {
     if (isAuthenticated) {
-      console.log(
-        "User is authenticated. Address:",
-        ownerAddress,
-        isAuthenticated
-      );
-
-      if (!isAuthenticated) {
-        router.push("/signin");
-      }
+      console.log("User is authenticated. Address:", isAuthenticated);
 
       // Additional actions upon successful sign-in, if necessary
+    } else {
+      router.push("/signin");
     }
   }, [isAuthenticated, ownerAddress]);
 
