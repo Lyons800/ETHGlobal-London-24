@@ -1,8 +1,15 @@
 import { VerificationLevel, IDKitWidget } from "@worldcoin/idkit";
 import type { ISuccessResult } from "@worldcoin/idkit";
 import type { VerifyReply } from "./api/verify";
+import { useRequireAuth } from "@/hooks/useRequireAuth";
 
 export default function Worldcoin() {
+  // const { isAuthenticated } = useRequireAuth(); // Redirects to /signin if not authenticated
+
+  // if (!isAuthenticated) {
+  //   return <div>Loading...</div>;
+  // }
+
   if (!process.env.NEXT_PUBLIC_WLD_APP_ID) {
     throw new Error("app_id is not set in environment variables!");
   }
@@ -61,7 +68,7 @@ export default function Worldcoin() {
           handleVerify={handleProof}
           verification_level={VerificationLevel.Orb} // Change this to VerificationLevel.Device to accept Orb- and Device-verified users
         >
-          {({ open }) => (
+          {({ open }: { open: any }) => (
             <button className="border border-black rounded-md" onClick={open}>
               <div className="mx-3 my-1">Verify with World ID</div>
             </button>
