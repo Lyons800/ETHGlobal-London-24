@@ -8,9 +8,12 @@ dependencies:
   '@mui/material':
     specifier: ^5.15.13
     version: 5.15.13(@types/react@18.2.0)(react-dom@18.2.0)(react@18.2.0)
+  '@radix-ui/react-icons':
+    specifier: ^1.3.0
+    version: 1.3.0(react@18.2.0)
   '@safe-global/auth-kit':
     specifier: ^2.0.2
-    version: 2.0.2(@babel/runtime@7.23.5)
+    version: 2.0.2(@babel/runtime@7.24.0)
   '@safe-global/protocol-kit':
     specifier: ^3.0.1
     version: 3.0.1
@@ -28,10 +31,16 @@ dependencies:
     version: 18.2.1
   '@web3auth/safeauth-embed':
     specifier: ^0.0.0
-    version: 0.0.0(@babel/runtime@7.23.5)
+    version: 0.0.0(@babel/runtime@7.24.0)
   '@worldcoin/idkit':
     specifier: ^1.1.0
     version: 1.1.0(@types/react-dom@18.2.1)(@types/react@18.2.0)(prop-types@15.8.1)(react-dom@18.2.0)(react@18.2.0)(tailwindcss@3.3.2)(typescript@5.0.4)
+  class-variance-authority:
+    specifier: ^0.7.0
+    version: 0.7.0
+  clsx:
+    specifier: ^2.1.0
+    version: 2.1.0
   eslint:
     specifier: 8.39.0
     version: 8.39.0
@@ -50,6 +59,12 @@ dependencies:
   react-dom:
     specifier: 18.2.0
     version: 18.2.0(react@18.2.0)
+  tailwind-merge:
+    specifier: ^2.2.1
+    version: 2.2.1
+  tailwindcss-animate:
+    specifier: ^1.0.7
+    version: 1.0.7(tailwindcss@3.3.2)
   typescript:
     specifier: 5.0.4
     version: 5.0.4
@@ -1058,6 +1073,14 @@ packages:
       react-dom: 18.2.0(react@18.2.0)
     dev: false
 
+  /@radix-ui/react-icons@1.3.0(react@18.2.0):
+    resolution: {integrity: sha512-jQxj/0LKgp+j9BiTXz3O3sgs26RNet2iLWmsPyRz2SIcR4q/4SbazXfnYwbAr+vLYKSfc7qxzyGQA1HLlYiuNw==}
+    peerDependencies:
+      react: ^16.x || ^17.x || ^18.x
+    dependencies:
+      react: 18.2.0
+    dev: false
+
   /@radix-ui/react-id@1.0.1(@types/react@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-tI7sT/kqYp8p96yGWY1OAnLHrqDgzHefRBKQ2YAkBS5ja7QLcZ9Z/uY7bEjPUatf8RomoXM8/1sMj1IJaE5UzQ==}
     peerDependencies:
@@ -1222,7 +1245,7 @@ packages:
       '@types/react':
         optional: true
     dependencies:
-      '@babel/runtime': 7.23.5
+      '@babel/runtime': 7.24.0
       '@radix-ui/react-use-callback-ref': 1.0.1(@types/react@18.2.0)(react@18.2.0)
       '@types/react': 18.2.0
       react: 18.2.0
@@ -1281,12 +1304,12 @@ packages:
       - utf-8-validate
     dev: false
 
-  /@safe-global/auth-kit@2.0.2(@babel/runtime@7.23.5):
+  /@safe-global/auth-kit@2.0.2(@babel/runtime@7.24.0):
     resolution: {integrity: sha512-8MZJuf86tpwawSFyp7WfZyOrYZ9jx4KgYur6jgqKBtd9rt5069JsfzuwkkuCNLQ7c48CmQjySfIKoIfx6DHKMg==}
     dependencies:
       '@safe-global/api-kit': 2.2.0
       '@safe-global/protocol-kit': 3.0.1
-      '@web3auth/safeauth-embed': 0.0.0(@babel/runtime@7.23.5)
+      '@web3auth/safeauth-embed': 0.0.0(@babel/runtime@7.24.0)
       ethers: 6.11.1
     transitivePeerDependencies:
       - '@babel/runtime'
@@ -1426,18 +1449,18 @@ packages:
       tailwindcss: 3.3.2
     dev: false
 
-  /@toruslabs/base-controllers@4.11.0(@babel/runtime@7.23.5):
+  /@toruslabs/base-controllers@4.11.0(@babel/runtime@7.24.0):
     resolution: {integrity: sha512-WJBvAXHL2GpfDdeoBS7Egw/urX862NyS5jxTTOtsTwJrMW9rG482Qa/5oRkiqJafAjkSF5vtsZxVtqZicEzlsA==}
     engines: {node: '>=18.x', npm: '>=9.x'}
     peerDependencies:
       '@babel/runtime': 7.x
     dependencies:
-      '@babel/runtime': 7.23.5
+      '@babel/runtime': 7.24.0
       '@ethereumjs/util': 9.0.2
       '@metamask/rpc-errors': 6.2.1
       '@toruslabs/broadcast-channel': 9.0.1
-      '@toruslabs/http-helpers': 6.1.0(@babel/runtime@7.23.5)
-      '@toruslabs/openlogin-jrpc': 6.2.11(@babel/runtime@7.23.5)
+      '@toruslabs/http-helpers': 6.1.0(@babel/runtime@7.24.0)
+      '@toruslabs/openlogin-jrpc': 6.2.11(@babel/runtime@7.24.0)
       async-mutex: 0.4.1
       bignumber.js: 9.1.2
       bowser: 2.11.0
@@ -1455,9 +1478,9 @@ packages:
     resolution: {integrity: sha512-xypCZwwD+cJ8fRCtMiJMWuuPg/9rf4P3AhWGkrTKL49GXFEx23akUjq/ti4n1o1uJdQok6E9MH9Z/JpLniyRaA==}
     engines: {node: '>=18.x', npm: '>=9.x'}
     dependencies:
-      '@babel/runtime': 7.23.5
+      '@babel/runtime': 7.24.0
       '@toruslabs/eccrypto': 4.0.0
-      '@toruslabs/metadata-helpers': 5.1.0(@babel/runtime@7.23.5)
+      '@toruslabs/metadata-helpers': 5.1.0(@babel/runtime@7.24.0)
       bowser: 2.11.0
       loglevel: 1.9.1
       oblivious-set: 1.1.1
@@ -1470,13 +1493,13 @@ packages:
       - utf-8-validate
     dev: false
 
-  /@toruslabs/constants@13.2.0(@babel/runtime@7.23.5):
+  /@toruslabs/constants@13.2.0(@babel/runtime@7.24.0):
     resolution: {integrity: sha512-n3nQxzsogjs76Zq3QqB9KbHfSFhlBtW4v6Z9zlVX6Pf8QraLd4OCHQFzZgrI2cDRz0oAix6Ihrzl0S7z18/J1g==}
     engines: {node: '>=18.x', npm: '>=9.x'}
     peerDependencies:
       '@babel/runtime': 7.x
     dependencies:
-      '@babel/runtime': 7.23.5
+      '@babel/runtime': 7.24.0
     dev: false
 
   /@toruslabs/eccrypto@4.0.0:
@@ -1486,21 +1509,21 @@ packages:
       elliptic: 6.5.5
     dev: false
 
-  /@toruslabs/ethereum-controllers@4.11.0(@babel/runtime@7.23.5):
+  /@toruslabs/ethereum-controllers@4.11.0(@babel/runtime@7.24.0):
     resolution: {integrity: sha512-IlXzpf1wjTFfkrrHAWRnNT9qV5sbAnqILl3VqcpKkZ+EoLzzpGxao1JpZ10GMgRKvnR2KCAjTxvjmQhvSV5E5A==}
     engines: {node: '>=16.18.1', npm: '>=8.x'}
     peerDependencies:
       '@babel/runtime': 7.x
     dependencies:
-      '@babel/runtime': 7.23.5
+      '@babel/runtime': 7.24.0
       '@ethereumjs/common': 4.2.0
       '@ethereumjs/tx': 5.2.1
       '@ethereumjs/util': 9.0.2
       '@metamask/eth-sig-util': 7.0.1
       '@metamask/rpc-errors': 6.2.1
-      '@toruslabs/base-controllers': 4.11.0(@babel/runtime@7.23.5)
-      '@toruslabs/http-helpers': 6.1.0(@babel/runtime@7.23.5)
-      '@toruslabs/openlogin-jrpc': 6.2.11(@babel/runtime@7.23.5)
+      '@toruslabs/base-controllers': 4.11.0(@babel/runtime@7.24.0)
+      '@toruslabs/http-helpers': 6.1.0(@babel/runtime@7.24.0)
+      '@toruslabs/openlogin-jrpc': 6.2.11(@babel/runtime@7.24.0)
       async-mutex: 0.4.1
       bignumber.js: 9.1.2
       bn.js: 5.2.1
@@ -1517,7 +1540,7 @@ packages:
       - utf-8-validate
     dev: false
 
-  /@toruslabs/http-helpers@6.1.0(@babel/runtime@7.23.5):
+  /@toruslabs/http-helpers@6.1.0(@babel/runtime@7.24.0):
     resolution: {integrity: sha512-tRBhlY5ccFAf3yZC5/gPXPq9LWX8ipeYyVjJO6exZjeXNxPEyz3IIsuQvxpBYLaQ72XihNdsKiYp2dEdUPEFyw==}
     engines: {node: '>=18.x', npm: '>=9.x'}
     peerDependencies:
@@ -1527,20 +1550,20 @@ packages:
       '@sentry/types':
         optional: true
     dependencies:
-      '@babel/runtime': 7.23.5
+      '@babel/runtime': 7.24.0
       lodash.merge: 4.6.2
       loglevel: 1.9.1
     dev: false
 
-  /@toruslabs/metadata-helpers@5.1.0(@babel/runtime@7.23.5):
+  /@toruslabs/metadata-helpers@5.1.0(@babel/runtime@7.24.0):
     resolution: {integrity: sha512-7fdqKuWUaJT/ng+PlqrA4XKkn8Dij4JJozfv/4gHTi0f/6JFncpzIces09jTV70hCf0JIsTCvIDlzKOdJ+aeZg==}
     engines: {node: '>=18.x', npm: '>=9.x'}
     peerDependencies:
       '@babel/runtime': 7.x
     dependencies:
-      '@babel/runtime': 7.23.5
+      '@babel/runtime': 7.24.0
       '@toruslabs/eccrypto': 4.0.0
-      '@toruslabs/http-helpers': 6.1.0(@babel/runtime@7.23.5)
+      '@toruslabs/http-helpers': 6.1.0(@babel/runtime@7.24.0)
       elliptic: 6.5.5
       ethereum-cryptography: 2.1.3
       json-stable-stringify: 1.1.1
@@ -1548,15 +1571,15 @@ packages:
       - '@sentry/types'
     dev: false
 
-  /@toruslabs/openlogin-jrpc@6.2.11(@babel/runtime@7.23.5):
+  /@toruslabs/openlogin-jrpc@6.2.11(@babel/runtime@7.24.0):
     resolution: {integrity: sha512-+CnQi8chz5q1w6+1BxnGYlhdpmuAOiTthnRBUtAqmAkeG6uwdns2Fz1kWsk8LjRvseGsQPppzDUlc97RTKz7cw==}
     engines: {node: '>=18.x', npm: '>=9.x'}
     peerDependencies:
       '@babel/runtime': 7.x
     dependencies:
-      '@babel/runtime': 7.23.5
+      '@babel/runtime': 7.24.0
       '@metamask/rpc-errors': 6.2.1
-      '@toruslabs/openlogin-utils': 6.2.11(@babel/runtime@7.23.5)
+      '@toruslabs/openlogin-utils': 6.2.11(@babel/runtime@7.24.0)
       end-of-stream: 1.4.4
       events: 3.3.0
       fast-safe-stringify: 2.1.1
@@ -1567,14 +1590,14 @@ packages:
       - supports-color
     dev: false
 
-  /@toruslabs/openlogin-utils@6.2.11(@babel/runtime@7.23.5):
+  /@toruslabs/openlogin-utils@6.2.11(@babel/runtime@7.24.0):
     resolution: {integrity: sha512-nOPfG6Oye/NfiilN869D8IRz8+ACV9GLFFK7U7AnwYjLv+M5PR5z3LwtCdZp04+pMhQpT28yKwCMiAgnWWjSuw==}
     engines: {node: '>=18.x', npm: '>=9.x'}
     peerDependencies:
       '@babel/runtime': 7.x
     dependencies:
-      '@babel/runtime': 7.23.5
-      '@toruslabs/constants': 13.2.0(@babel/runtime@7.23.5)
+      '@babel/runtime': 7.24.0
+      '@toruslabs/constants': 13.2.0(@babel/runtime@7.24.0)
       base64url: 3.0.1
     dev: false
 
@@ -1741,14 +1764,14 @@ packages:
       eslint-visitor-keys: 3.4.3
     dev: false
 
-  /@web3auth/safeauth-embed@0.0.0(@babel/runtime@7.23.5):
+  /@web3auth/safeauth-embed@0.0.0(@babel/runtime@7.24.0):
     resolution: {integrity: sha512-bTWjyf/ywHJ0P1nvemQZk5ebQaeExpqEOfSayL4GbUplcWlve43NRQSF7k/44gawiQ8uibYyLgElpiovUpqm4w==}
     engines: {node: '>=18.x', npm: '>=9.x'}
     peerDependencies:
       '@babel/runtime': 7.x
     dependencies:
-      '@babel/runtime': 7.23.5
-      '@web3auth/ws-embed': 0.0.0(@babel/runtime@7.23.5)
+      '@babel/runtime': 7.24.0
+      '@web3auth/ws-embed': 0.0.0(@babel/runtime@7.24.0)
     transitivePeerDependencies:
       - '@sentry/types'
       - bufferutil
@@ -1757,17 +1780,17 @@ packages:
       - utf-8-validate
     dev: false
 
-  /@web3auth/ws-embed@0.0.0(@babel/runtime@7.23.5):
+  /@web3auth/ws-embed@0.0.0(@babel/runtime@7.24.0):
     resolution: {integrity: sha512-FZtpuXN1oiOex3O5jPMTZI6SjDY95Gz/zqBX+6Fdyv1CBV024z3bljrkkO40fcDbX/Xn3BI9Rr9cxANpTgxMkA==}
     engines: {node: '>=18.x', npm: '>=9.x'}
     peerDependencies:
       '@babel/runtime': 7.x
     dependencies:
-      '@babel/runtime': 7.23.5
+      '@babel/runtime': 7.24.0
       '@metamask/rpc-errors': 6.2.1
-      '@toruslabs/base-controllers': 4.11.0(@babel/runtime@7.23.5)
-      '@toruslabs/ethereum-controllers': 4.11.0(@babel/runtime@7.23.5)
-      '@toruslabs/openlogin-jrpc': 6.2.11(@babel/runtime@7.23.5)
+      '@toruslabs/base-controllers': 4.11.0(@babel/runtime@7.24.0)
+      '@toruslabs/ethereum-controllers': 4.11.0(@babel/runtime@7.24.0)
+      '@toruslabs/openlogin-jrpc': 6.2.11(@babel/runtime@7.24.0)
       fast-deep-equal: 3.1.3
       loglevel: 1.9.1
       pump: 3.0.0
@@ -2363,6 +2386,12 @@ packages:
     resolution: {integrity: sha512-rhjH9AG1fvabIDoGRVH587413LPjTZgmDF9fOFCbFJQV4yuocX1mHxxvXI4g3cGwbVY9wAYIoKlg1N79frJKQw==}
     dev: false
 
+  /class-variance-authority@0.7.0:
+    resolution: {integrity: sha512-jFI8IQw4hczaL4ALINxqLEXQbWcNjoSkloa4IaufXCJr6QawJyw7tuRysRsrE8w2p/4gGaxKIt/hX3qz/IbD1A==}
+    dependencies:
+      clsx: 2.0.0
+    dev: false
+
   /client-only@0.0.1:
     resolution: {integrity: sha512-IV3Ou0jSMzZrd3pZ48nLkT9DA7Ag1pnPzaiQhpW7c3RbcqqzvzzVu+L8gfqMp/8IM2MQtSiqaCxrrcfu8I8rMA==}
     dev: false
@@ -2379,6 +2408,11 @@ packages:
     resolution: {integrity: sha512-ROoL94jJH2dUVML2Y/5PEDNaSHgeOdSDicUyS7izcF63G6sTc/FTjLub4b8Il9S8S0beOfYt0TaA5qvFK+w0wA==}
     dependencies:
       mimic-response: 1.0.1
+    dev: false
+
+  /clsx@2.0.0:
+    resolution: {integrity: sha512-rQ1+kcj+ttHG0MKVGBUXwayCCF1oh39BF5COIpRzuCEv8Mwjv0XucrI2ExNTOn9IlLifGClWQcU9BrZORvtw6Q==}
+    engines: {node: '>=6'}
     dev: false
 
   /clsx@2.1.0:
@@ -5445,7 +5479,7 @@ packages:
   /rtl-css-js@1.16.1:
     resolution: {integrity: sha512-lRQgou1mu19e+Ya0LsTvKrVJ5TYUbqCVPAiImX3UfLTenarvPUl1QFdvu5Z3PYmHT9RCcwIfbjRQBntExyj3Zg==}
     dependencies:
-      '@babel/runtime': 7.23.5
+      '@babel/runtime': 7.24.0
     dev: false
 
   /run-parallel@1.2.0:
@@ -5892,6 +5926,20 @@ packages:
       - bufferutil
       - supports-color
       - utf-8-validate
+    dev: false
+
+  /tailwind-merge@2.2.1:
+    resolution: {integrity: sha512-o+2GTLkthfa5YUt4JxPfzMIpQzZ3adD1vLVkvKE1Twl9UAhGsEbIZhHHZVRttyW177S8PDJI3bTQNaebyofK3Q==}
+    dependencies:
+      '@babel/runtime': 7.24.0
+    dev: false
+
+  /tailwindcss-animate@1.0.7(tailwindcss@3.3.2):
+    resolution: {integrity: sha512-bl6mpH3T7I3UFxuvDEXLxy/VuFxBk5bbzplh7tXI68mwMokNYd1t9qPBHlnyTwfa4JGC4zP516I1hYYtQ/vspA==}
+    peerDependencies:
+      tailwindcss: '>=3.0.0 || insiders'
+    dependencies:
+      tailwindcss: 3.3.2
     dev: false
 
   /tailwindcss@3.3.2:
