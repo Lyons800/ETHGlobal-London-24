@@ -124,6 +124,7 @@ const AccountAbstractionProvider = ({
   const [web3Provider, setWeb3Provider] = useState<ethers.BrowserProvider>();
 
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
+  const [loading, setLoading] = useState(true);
 
   const chain = getChain(chainId) || initialChain;
 
@@ -144,7 +145,17 @@ const AccountAbstractionProvider = ({
 
   // Inside AccountAbstractionProvider component
 
-  console.log("AccountAbstractionProvider rendering");
+  useEffect(() => {
+    const checkAuthStatus = async () => {
+      // Your logic to check authentication status
+      // For example, rehydrating from localStorage
+      const authState = localStorage.getItem("isAuthenticated") === "true";
+      setIsAuthenticated(authState);
+      setLoading(false); // Indicate that loading/checking is complete
+    };
+
+    checkAuthStatus();
+  }, []);
 
   useEffect(() => {
     if (typeof window === "undefined") {
@@ -208,6 +219,7 @@ const AccountAbstractionProvider = ({
       setSafes(safes || []);
       setWeb3Provider(new ethers.BrowserProvider(provider));
       setIsAuthenticated(true);
+      localStorage.setItem("isAuthenticated", "true");
     } catch (error) {
       console.log("error: ", error);
     }
@@ -268,9 +280,9 @@ const AccountAbstractionProvider = ({
       localStorage.setItem(MONERIUM_SELECTED_SAFE, safeSelected);
 
       const moneriumClient = await moneriumPack.open({
-        redirectUrl: process.env.REACT_APP_MONERIUM_REDIRECT_URL,
-        authCode,
-        refreshToken,
+        // redirectUrl: process.env.REACT_APP_MONERIUM_REDIRECT_URL,
+        // authCode,
+        // refreshToken,
       });
 
       if (moneriumClient.bearerProfile) {

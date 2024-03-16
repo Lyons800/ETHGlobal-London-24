@@ -1,26 +1,32 @@
-"use client";
-
 import React, { ReactNode, useEffect } from "react";
 import Sidebar from "./Sidebar";
 import { useAccountAbstraction } from "@/store/accountAbstractionContext";
 import { useRouter } from "next/router";
-import { useSafeAuth } from "@/hooks/useSafeAuth";
 
 interface MainLayoutProps {
   children: ReactNode;
 }
 
 const MainLayout = ({ children }: MainLayoutProps) => {
-  const { isAuthenticated } = useAccountAbstraction();
+  const { isAuthenticated, loading } = useAccountAbstraction();
+  const router = useRouter();
 
   useEffect(() => {
-    if (!isAuthenticated && typeof window !== "undefined") {
-      window.location.href = "/signin";
+    if (!loading && !isAuthenticated) {
+      router.push("/signin");
     }
-  }, [isAuthenticated]);
+  }, [loading, isAuthenticated, router]);
+
+  if (loading) return null; // or a loading spinner
+
+  // If not authenticated, you can choose to return null or a loading indicator instead of the layout structure.
+  // This prevents a flash of the layout before the redirection occurs.
+  if (!isAuthenticated) {
+    return null; // or <LoadingIndicator /> if you have a loading component
+  }
 
   return (
-    <div className={`flex ${!isAuthenticated ? "hidden" : ""}`}>
+    <div className="flex">
       <aside className="w-64" aria-label="Sidebar">
         <Sidebar />
       </aside>

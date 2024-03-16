@@ -16,6 +16,8 @@ export default function SignIn() {
   useEffect(() => {
     if (isAuthenticated) {
       console.log("User is authenticated. Address:", ownerAddress);
+      
+
       // Additional actions upon successful sign-in, if necessary
     }
   }, [isAuthenticated, ownerAddress]);
