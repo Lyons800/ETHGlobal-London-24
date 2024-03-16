@@ -32,11 +32,13 @@
     "eslint-config-next": "13.3.4",
     "ethers": "^6.11.1",
     "next": "13.3.4",
+    "permissionless": "^0.1.10",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "tailwind-merge": "^2.2.1",
     "tailwindcss-animate": "^1.0.7",
-    "typescript": "5.0.4"
+    "typescript": "5.0.4",
+    "viem": "^2.8.10"
   },
   "devDependencies": {
     "autoprefixer": "10.4.14",

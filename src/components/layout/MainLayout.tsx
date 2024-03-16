@@ -2,7 +2,7 @@
 
 import React, { ReactNode, useEffect } from "react";
 import Sidebar from "./Sidebar";
-import { useAccountAbstraction } from "@/store/accountAbstractionContextOld";
+import { useAccountAbstraction } from "@/store/accountAbstractionContext";
 import { useRouter } from "next/router";
 import { useSafeAuth } from "@/hooks/useSafeAuth";
 

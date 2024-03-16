@@ -8,7 +8,11 @@ import {
 import { ethers } from "ethers";
 
 import AccountAbstraction from "@safe-global/account-abstraction-kit-poc";
-import { SafeAuthConfig, SafeAuthInitOptions, SafeAuthPack } from "@safe-global/auth-kit";
+import {
+  SafeAuthConfig,
+  SafeAuthInitOptions,
+  SafeAuthPack,
+} from "@safe-global/auth-kit";
 import { MoneriumPack, StripePack } from "@safe-global/onramp-kit";
 import { GelatoRelayPack } from "@safe-global/relay-kit";
 import { RelayResponse as GelatoRelayResponse } from "@gelatonetwork/relay-sdk";
@@ -96,6 +100,8 @@ const AccountAbstractionProvider = ({
 }: {
   children: JSX.Element;
 }) => {
+  console.log("AccountAbstractionProvider rendering");
+
   // owner address from the email  (provided by web3Auth)
   const [ownerAddress, setOwnerAddress] = useState<string>("");
 
@@ -138,38 +144,51 @@ const AccountAbstractionProvider = ({
 
   // Inside AccountAbstractionProvider component
 
+  console.log("AccountAbstractionProvider rendering");
+
   useEffect(() => {
     if (typeof window === "undefined") {
       // Exit if we're server-side
+      console.log("initSafeAuth: Server-side, skipping initialization.");
+
       return;
     }
 
     async function initSafeAuth() {
-      // Dynamic import for SafeAuthPack inside the useEffect to ensure it's client-side
-      const { SafeAuthPack } = await import("@safe-global/auth-kit");
+      try {
+        // Dynamic import for SafeAuthPack inside the useEffect to ensure it's client-side
+        const { SafeAuthPack } = await import("@safe-global/auth-kit");
+        console.log("initSafeAuth: SafeAuthPack imported.");
 
-      const safeAuthConfig: SafeAuthConfig = {
-        txServiceUrl: "https://safe-transaction-mainnet.safe.global",
-      };
+        const safeAuthConfig: SafeAuthConfig = {
+          txServiceUrl: "https://safe-transaction-mainnet.safe.global",
+        };
 
-      const safeAuthInitOptions: SafeAuthInitOptions = {
-        enableLogging: true,
-        showWidgetButton: false,
-        chainConfig: {
-          chainId: chain.id, // Using the dynamic chain ID from your state
-          rpcTarget: chain.rpcUrl, // Using the dynamic RPC URL from your state
-        },
-      };
+        const safeAuthInitOptions: SafeAuthInitOptions = {
+          enableLogging: true,
+          showWidgetButton: false,
+          chainConfig: {
+            chainId: chain.id, // Using the dynamic chain ID from your state
+            rpcTarget: chain.rpcUrl, // Using the dynamic RPC URL from your state
+          },
+        };
 
-      const authPack = new SafeAuthPack(safeAuthConfig);
-      await authPack.init(safeAuthInitOptions);
-      setSafeAuthPack(authPack);
+        const authPack = new SafeAuthPack(safeAuthConfig);
+        await authPack.init(safeAuthInitOptions);
+        setSafeAuthPack(authPack);
 
-      // Example: Subscribe to accountsChanged event
-      authPack.subscribe("accountsChanged", (accounts: string[]) => {
-        console.log("Accounts Changed:", accounts);
-        setIsAuthenticated(accounts && accounts.length > 0);
-      });
+        // Example: Subscribe to accountsChanged event
+        authPack.subscribe("accountsChanged", (accounts: string[]) => {
+          console.log("Accounts Changed Event Fired", accounts);
+          const isAuthenticated = accounts && accounts.length > 0;
+          console.log("Setting isAuthenticated to:", isAuthenticated);
+          setIsAuthenticated(isAuthenticated);
+        });
+
+        console.log("initSafeAuth: Initialization completed.");
+      } catch (error) {
+        console.error("initSafeAuth Error:", error);
+      }
     }
 
     initSafeAuth();
@@ -211,35 +230,36 @@ const AccountAbstractionProvider = ({
   const [moneriumInfo, setMoneriumInfo] = useState<MoneriumInfo>();
   const [moneriumPack, setMoneriumPack] = useState<MoneriumPack>();
 
-  // Initialize MoneriumPack
-  useEffect(() => {
-    (async () => {
-      if (!web3Provider || !safeSelected) return;
+  // // Initialize MoneriumPack
+  // useEffect(() => {
+  //   (async () => {
+  //     if (!web3Provider || !safeSelected) return;
 
-      const safeOwner = await web3Provider.getSigner();
-      const ethAdapter = new EthersAdapter({
-        ethers,
-        signerOrProvider: safeOwner,
-      });
+  //     const safeOwner = await web3Provider.getSigner();
+  //     const ethAdapter = new EthersAdapter({
+  //       ethers,
+  //       signerOrProvider: safeOwner,
+  //     });
 
-      const safeSdk = await Safe.create({
-        ethAdapter,
-        safeAddress: safeSelected,
-        isL1SafeSingleton: true,
-      });
+  //     const safeSdk = await Safe.create({
+  //       ethAdapter,
+  //       safeAddress: safeSelected,
+  //       isL1SafeSingleton: true,
+  //     });
 
-      const pack = new MoneriumPack({
-        clientId: process.env.REACT_APP_MONERIUM_CLIENT_ID || "",
-        environment: "sandbox",
-      });
+  //     const pack = new MoneriumPack({
+  //       clientId: process.env.REACT_APP_MONERIUM_CLIENT_ID || "",
+  //       environment: "sandbox",
+  //       redirectUrl: process.env.REACT_APP_MONERIUM_REDIRECT_URL || "",
+  //     });
 
-      await pack.init({
-        safeSdk,
-      });
+  //     await pack.init({
+  //       safeSdk,
+  //     });
 
-      setMoneriumPack(pack);
-    })();
-  }, [web3Provider, safeSelected]);
+  //     setMoneriumPack(pack);
+  //   })();
+  // }, [web3Provider, safeSelected]);
 
   const startMoneriumFlow = useCallback(
     async (authCode?: string, refreshToken?: string) => {

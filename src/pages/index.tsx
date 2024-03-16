@@ -3,7 +3,6 @@
 import MainLayout from "@/components/layout/MainLayout";
 import { Button } from "@/components/ui/button";
 import { useSafeAuth } from "@/hooks/useSafeAuth";
-import { useAccountAbstraction } from "@/store/accountAbstractionContextOld";
 import { useRouter } from "next/navigation";
 
 export default function HomePage() {
