@@ -9,11 +9,17 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@gelatonetwork/relay-sdk": "^5.5.6",
+    "@monerium/sdk": "^2.12.0",
     "@mui/material": "^5.15.13",
     "@radix-ui/react-icons": "^1.3.0",
     "@radix-ui/react-slot": "^1.0.2",
+    "@safe-global/account-abstraction-kit-poc": "^2.0.2",
     "@safe-global/auth-kit": "^2.0.2",
+    "@safe-global/onramp-kit": "^3.0.1",
     "@safe-global/protocol-kit": "^3.0.1",
+    "@safe-global/relay-kit": "^2.0.2",
+    "@safe-global/safe-core-sdk-types": "^4.0.1",
     "@safe-global/safe-react-components": "^2.0.6",
     "@types/node": "18.16.3",
     "@types/react": "18.2.0",
